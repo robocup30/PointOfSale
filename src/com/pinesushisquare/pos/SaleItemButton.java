@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
-public class SaleItemButton extends JButton {
+public class SaleItemButton extends JButton implements MouseListener{
 
 	public final String name;
 	public final double price;
@@ -35,7 +35,7 @@ public class SaleItemButton extends JButton {
 		this.price = price;
 		this.color = color;
 		this.setBorderPainted(true);
-		this.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 
 		BufferedImage buffImg = null;
 		try {
@@ -54,75 +54,72 @@ public class SaleItemButton extends JButton {
 		g2.drawString(name, start, 23);
 		ImageIcon img = new ImageIcon(buffImg);
 		this.setIcon(img);
+		this.addMouseListener(this);
+		
+	}
 
-		this.addMouseListener(new MouseListener() {
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
+	@Override
+	public void mousePressed(MouseEvent e) {
+		ItemPanel.add(new SaleItem(name, price, 1, 0));
+		BufferedImage buffImg = null;
+		try {
+			buffImg = ImageIO.read(new File("cool.png"));
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		Graphics2D g2 = buffImg.createGraphics();
+		g2.setComposite(AlphaComposite.SrcAtop);
+		g2.setColor(new Color(255, 0, 0, 50));
+		g2.fillRect(0, 0, 150, 100);
+		g2.setColor(Color.BLACK);
+		int stringLen = (int) g2.getFontMetrics()
+				.getStringBounds(name, g2).getWidth();
+		int start = buffImg.getWidth() / 2 - stringLen / 2;
+		g2.drawString(name, start, 23);
+		ImageIcon img = new ImageIcon(buffImg);
+		setIcon(img);
+		Startup.frame.repaint();
+		
+	}
 
-			}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		BufferedImage buffImg = null;
+		try {
+			buffImg = ImageIO.read(new File("cool.png"));
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		Graphics2D g2 = buffImg.createGraphics();
+		g2.setComposite(AlphaComposite.SrcAtop);
+		g2.setColor(new Color(255, 0, 0, 100));
+		g2.fillRect(0, 0, 150, 100);
+		g2.setColor(Color.BLACK);
+		int stringLen = (int) g2.getFontMetrics()
+				.getStringBounds(name, g2).getWidth();
+		int start = buffImg.getWidth() / 2 - stringLen / 2;
+		g2.drawString(name, start, 23);
+		ImageIcon img = new ImageIcon(buffImg);
+		setIcon(img);
+		
+	}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				ItemPanel.add(new SaleItem(name, price, 1, 0));
-				BufferedImage buffImg = null;
-				try {
-					buffImg = ImageIO.read(new File("cool.png"));
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-				Graphics2D g2 = buffImg.createGraphics();
-				g2.setComposite(AlphaComposite.SrcAtop);
-				g2.setColor(new Color(255, 0, 0, 50));
-				g2.fillRect(0, 0, 150, 100);
-				g2.setColor(Color.BLACK);
-				int stringLen = (int) g2.getFontMetrics()
-						.getStringBounds(name, g2).getWidth();
-				int start = buffImg.getWidth() / 2 - stringLen / 2;
-				g2.drawString(name, start, 23);
-				ImageIcon img = new ImageIcon(buffImg);
-				setIcon(img);
-			}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				BufferedImage buffImg = null;
-				try {
-					buffImg = ImageIO.read(new File("cool.png"));
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-				Graphics2D g2 = buffImg.createGraphics();
-				g2.setComposite(AlphaComposite.SrcAtop);
-				g2.setColor(new Color(255, 0, 0, 100));
-				g2.fillRect(0, 0, 150, 100);
-				g2.setColor(Color.BLACK);
-				int stringLen = (int) g2.getFontMetrics()
-						.getStringBounds(name, g2).getWidth();
-				int start = buffImg.getWidth() / 2 - stringLen / 2;
-				g2.drawString(name, start, 23);
-				ImageIcon img = new ImageIcon(buffImg);
-				setIcon(img);
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
