@@ -30,7 +30,7 @@ public class SaleItemButton extends JButton {
 		this(name, price, Color.RED);
 	}
 
-	public SaleItemButton(final String name, double price, Color color) {
+	public SaleItemButton(final String name, final double price, Color color) {
 		this.name = name;
 		this.price = price;
 		this.color = color;
@@ -66,7 +66,7 @@ public class SaleItemButton extends JButton {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				ItemPanel.items.add(new SaleItem(name, 1, 1, 1));
+				ItemPanel.add(new SaleItem(name, price, 1, 0));
 				BufferedImage buffImg = null;
 				try {
 					buffImg = ImageIO.read(new File("cool.png"));
