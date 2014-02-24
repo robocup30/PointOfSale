@@ -10,14 +10,14 @@ import javax.swing.*;
 public class Startup {
 
 	static SalePanel salePanel = new SalePanel();
-	static ItemPanel itemPanel = new ItemPanel();
+	static OrderPanel orderPanel = new OrderPanel();
 	static JFrame frame;
 	final static String LOOKANDFEEL = null;
 	JPanel mainPane = new JPanel();
 
 	public Startup() {
 		mainPane.setBorder(BorderFactory.createLineBorder(Color.black));
-		mainPane.add(itemPanel);
+		mainPane.add(orderPanel);
 		mainPane.add(salePanel);
 	}
 

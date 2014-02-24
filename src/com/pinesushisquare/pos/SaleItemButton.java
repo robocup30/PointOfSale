@@ -66,7 +66,7 @@ public class SaleItemButton extends JButton implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		ItemPanel.add(new SaleItem(name, price, 1, 0));
+		OrderPanel.midPanel.add(new SaleItem(name, price, 1, 0));
 		BufferedImage buffImg = null;
 		try {
 			buffImg = ImageIO.read(new File("cool.png"));
@@ -84,8 +84,7 @@ public class SaleItemButton extends JButton implements MouseListener{
 		g2.drawString(name, start, 23);
 		ImageIcon img = new ImageIcon(buffImg);
 		setIcon(img);
-		Startup.frame.repaint();
-		
+		Startup.frame.revalidate();
 	}
 
 	@Override

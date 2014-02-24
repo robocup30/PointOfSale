@@ -1,6 +1,11 @@
 package com.pinesushisquare.pos;
 
-public class SaleItem {
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+
+public class SaleItem extends JLabel{
 	
 	String name;
 	int count;
@@ -12,6 +17,7 @@ public class SaleItem {
 		this.price = price;
 		this.count = count;
 		this.discount = discount;
+		this.setText(name + price + count);
 	}
 
 }

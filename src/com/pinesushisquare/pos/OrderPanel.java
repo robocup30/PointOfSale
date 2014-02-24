@@ -12,15 +12,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ItemPanel extends JPanel {
+public class OrderPanel extends JPanel {
 
-	private static ArrayList<SaleItem> items = new ArrayList<SaleItem>();
 	public static JLabel topLabel = new JLabel("Reset All");
 	public static JPanel topPanel = new JPanel();
-	public static JPanel midPanel = new JPanel();
+	public static OrderPanelMid midPanel = new OrderPanelMid();
 	public static JPanel botPanel = new JPanel();
 
-	public ItemPanel() {
+	public OrderPanel() {
 		this.setPreferredSize(new Dimension(400, 900));
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.setBackground(Color.WHITE);
@@ -32,7 +31,7 @@ public class ItemPanel extends JPanel {
 	}
 
 	public static void add(SaleItem itemToAdd) {
-		items.add(itemToAdd);
+		//items.add(itemToAdd);
 	}
 
 	@Override
