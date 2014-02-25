@@ -17,11 +17,7 @@ public class SaleItem extends JLabel{
 		this.price = price;
 		this.count = count;
 		this.discount = discount;
-<<<<<<< HEAD
 		this.setText("  " + count + "  " + name + "    $ " + price);
-=======
-		this.setText(name + price + count + "sam");
->>>>>>> c2c7c9418ac7ed267b1cfb4419eae77077c27443
 	}
 
 }
